@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>TITLE</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+.back{
+ background-image: url("{{ url_for('static', filename='image/A.webp') }}");
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: 100% 100%;
+}
+.white{
+color:white;
+}
+.space{
+margin:10px 30px;
+padding:10px 10px;
+background: yellowgreen;
+width:500px
+}
+.gap{
+padding:10px 20px;
+}
+</style>
+  
+</head>
+
+<body class="back">
+ <div>
+	<div class="jumbotron">
+	<h1 style="text-align:center">HOSPITAL MORTALITY PREDICTION USING MACHINE LEARNING TECHNIQUES</h1>
+	
+	</div>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form class="form-group" action="{{ url_for('predict')}}"method="post">
+    		
+		<div class="row">
+		<div class="gap col-md-6 ">
+
+		<label class="white"  for="">age</label>
+		<input type="number" class="space form-control" step="0.01" name="AGE" placeholder="age" required="required" /><br>
+
+		<label class="white"  for="">BMI</label>
+		<input type="number" class="space form-control" step="0.01" name="BMI" placeholder="BMI" required="required" /><br>
+
+		<label class="white" for="">heart_rate</label>
+		<input type="number" class="space form-control" step="0.01" name="heart_rate" placeholder="heart_rate" required="required" /><br>
+
+		<label class="white" for="">Systolic_blood_pressure</label>
+		<input type="number" class="space form-control" step="0.01" name="Systolic_blood_pressure" placeholder="Systolic_blood_pressure" required="required" /><br>
+
+		<label class="white"  for="">Diastolic_blood_pressure</label>
+		<input type="number" class="space form-control" step="0.01" name="Diastolic_blood_pressure" placeholder="Diastolic_blood_pressure" required="required" /><br>
+
+		<label class="white"  for="">Respiratory_rate</label>
+		<input type="number" class="space form-control" step="0.01" name="Respiratory_rate" placeholder="Respiratory_rate" required="required" /><br>
+
+	</div>
+		
+
+
+
+<div class="gap col-md-6">
+		
+		<label class="white"  for="">temperature</label>
+		<input type="number" class="space form-control" step="0.01" name="temperature" placeholder="temperature" required="required" /><br>
+
+		<label class="white"  for="">SP_O2</label>
+		<input type="number" class="space form-control" step="0.01" name="SP_O2" placeholder="SP_O2" required="required" /><br>
+
+		<label class="white"  for="">Urine_output</label>
+		<input type="number" class="space form-control" step="0.01" name="Urine_output" placeholder="Urine_output" required="required" /><br>
+		
+		<label class="white"  for="">glucose</label>
+		<input type="number" class="space form-control" step="0.01" name="glucose" placeholder="glucose" required="required" /><br>
+
+		<label class="white"  for="">PH</label>
+		<input type="number" class="space form-control" step="0.01" name="PH" placeholder="PH" required="required" /><br>
+
+			
+</div>
+</div>
+
+<div style="padding:2% 35%">
+  <button type="submit" class="btn btn-success btn-block" style="width:350px;padding:20px">Predict</button>		
+</div>
+      
+    </form>
+
+   <br>
+   <br>
+<div  style="background:black;padding:2% 40%">
+	<h4 style="color: chocolate;"> {{ prediction_text }}</h4>
+</div>
+ </div>
+
+
+</body>
+</html>
